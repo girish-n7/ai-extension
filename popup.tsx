@@ -1,27 +1,34 @@
-import { useState } from "react"
+import { useState, useTransition } from "react"
+
+import "./style.css"
 
 function IndexPopup() {
-  const [data, setData] = useState("")
+  //manage state for input
+  let [data, setData] = useState({ question: "", answer: "" })
+
+  //handle change (can handle multiple input fields' changes in future)
+  function handleChange(e: any) {
+    let { name, value } = e.target
+    setData((prevState) => ({
+      ...prevState,
+      [name]: value
+    }))
+  }
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        padding: 16
-      }}>
-      <h2>
-        Welcome to your
-        <a href="https://www.plasmo.com" target="_blank">
-          {" "}
-          Plasmo
-        </a>{" "}
-        Extension!
-      </h2>
-      <input onChange={(e) => setData(e.target.value)} value={data} />
-      <a href="https://docs.plasmo.com" target="_blank">
-        View Docs
-      </a>
+    <div className="container">
+      <div className="answer">{data.answer}</div>
+      <div className="question--container">
+        <input
+          className="question"
+          name="question"
+          value={data.question}
+          onChange={(e) => handleChange(e)}
+          placeholder="Type your question here"
+          required
+          autoFocus></input>
+        <button className="generate">Generate</button>
+      </div>
     </div>
   )
 }
