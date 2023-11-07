@@ -1,4 +1,4 @@
-import { useState, useTransition } from "react"
+import { useState } from "react"
 
 import "./style.css"
 
@@ -14,6 +14,10 @@ function IndexPopup() {
       [name]: value
     }))
   }
+  //handle generate button
+  function handleGen() {
+    console.log(data)
+  }
 
   return (
     <div className="container">
@@ -27,7 +31,9 @@ function IndexPopup() {
           placeholder="Type your question here"
           required
           autoFocus></input>
-        <button className="generate">Generate</button>
+        <button className="generate" onClick={handleGen}>
+          Generate
+        </button>
       </div>
     </div>
   )

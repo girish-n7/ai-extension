@@ -1,7 +1,14 @@
+:root {
+  --background: #111111;
+  --text: aliceblue;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  background-color: var(--background);
+  color: var(--text);
 }
 
 .container {
@@ -37,7 +44,7 @@
 }
 
 .question:focus {
-  outline: 1px solid red;
+  outline: 1px solid var(--text);
 }
 
 .generate {
@@ -45,7 +52,6 @@
   border-radius: 3rem;
   border: none;
   background-color: green;
-  color: white;
   cursor: pointer;
 }
 
